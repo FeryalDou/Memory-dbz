@@ -1,23 +1,27 @@
 * {
   box-sizing: border-box;
+  margin-top: 0 auto;
 }
 
 body {
   background: url("image/boule\ de\ cristal\ .jpg") no-repeat;
   background-position: center;
   background-size: cover;
-  margin: 0;
+  margin-top: 0;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+.window {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #game-board {
   background-color: bisque;
-  background-position: center;
-  width: 600px;
-  height: 550px;
-  margin: 60px auto;
-  padding: 50px 0;
-  border-radius: 60px;
+  width: 900px;
+  height: 400px;
+  border-radius: 40px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -74,40 +78,83 @@ body {
 .logo {
   height: 100px;
   width: 100px;
-  /* border-radius: 100%; */
-  position: relative;
+  position: absolute;
+  bottom: 500px;
+  left: 150px;
   display: flex;
   box-shadow: aliceblue;
-  margin-left: 10%;
+  margin-top: 30%;
+}
+#startButton {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+}
+#timerReset {
+  position: absolute;
+  top: 70%;
+  right: 20px;
 }
 
 h1 {
-  color: bisque;
-  padding-left: 280px;
-  /*padding-top: 20px;*/
-  text-align: left;
+  color: black;
+  position: absolute;
+  top: 20px;
+  left: 13%;
+  transform: translateX(-50%);
+  top: 50px;
+  text-align: center;
 }
 
 h2 {
   color: bisque;
   padding-left: 10px;
-  box-sizing: border-box;
 }
 h4 {
   color: bisque;
+  margin-right: 10px;
+}
+#seconds {
 }
 
 #score {
-  border: radius 10px;
+  background-color: rgba(11, 11, 11, 0.8);
+  border-radius: 8px;
   font-size: 30px;
   font-family: Arial;
   width: 200px;
   padding: 20px;
-  margin: 0;
+  margin-left: 75%;
 }
 
 p {
   font-size: 20px;
   color: bisque;
   text-align: left;
+}
+#startbutton {
+  position: inherit;
+  border-radius: 10px;
+  margin-bottom: 0 20px;
+  background-color: goldenrod;
+}
+
+@media screen and (min-width: 1024px) {
+  .window {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #game-board {
+    background-color: bisque;
+    width: 900px;
+    height: 400px;
+    border-radius: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
 }

@@ -28,12 +28,15 @@ const cards = [
 const customMemoryGame = new CustomMemoryGame(cards);
 const timer = document.getElementById("timer");
 const startButton = document.getElementById("startButton");
-const resetButton = document.getElementById("reset");
+const resetButton = document.getElementById("timerReset");
 const timerStart = startButton;
 const secondsElement = document.getElementById("seconds");
 let time = 59;
 let intervalId = null;
 let reset = resetButton;
+let isTimerRunning = false;
+const win = document.getElementById("win");
+const loose = document.getElementById("loose");
 customMemoryGame.shuffleCards();
 
 /*Create HTML Elements for Cards*/
@@ -75,7 +78,8 @@ allCards.forEach((card) => {
         customMemoryGame.pairsClicked;
 
       if (customMemoryGame.checkIfFinished()) {
-        alert("Congratulations! You've completed the game ! Welcome to Namek");
+        win.show();
+        //alert("Congratulations! You've completed the game ! Welcome to Namek");
       }
     }
   });
@@ -84,6 +88,7 @@ allCards.forEach((card) => {
 resetButton.addEventListener("click", () => {
   clearInterval(intervalId);
   secondsElement.textContent = "2";
+  win.close();
   //startTimer();
 
   customMemoryGame.shuffleCards();
@@ -105,6 +110,9 @@ startButton.addEventListener("click", () => {
   allCards.forEach((card) => {
     card.classList.remove("turned");
   });
+  win.close();
+  loose.close();
+
   customMemoryGame.pickedCards = [];
   customMemoryGame.pairsClicked = 0;
   customMemoryGame.pairsGuessed = 0;
@@ -123,16 +131,17 @@ function startTimer() {
       seconds = "0" + seconds;
     }
     console.log(minutes + ":" + seconds);
-    console.log(minutes + ":" + seconds);
     secondsElement.textContent = minutes + ":" + seconds;
     time--;
     // console.log(time);
     // secondsElement.textContent = time;
     if (time === 0) {
       clearInterval(intervalId);
-      alert("Game over !!! ");
+      //alert("Game over !!! ");
+      loose.show();
     }
   }, 1000);
+  isTimerRunning = true;
 }
 
 timerStart.addEventListener("click", startTimer);
