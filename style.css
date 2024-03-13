@@ -1,0 +1,113 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: url("image/boule\ de\ cristal\ .jpg") no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin: 0;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+#game-board {
+  background-color: bisque;
+  background-position: center;
+  width: 600px;
+  height: 550px;
+  margin: 60px auto;
+  padding: 50px 0;
+  border-radius: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  perspective: 300px;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.card.turned {
+  pointer-events: none;
+}
+
+.card.turned .front {
+  transform: rotateY(0deg);
+}
+.card.turned .back {
+  transform: rotateY(180deg);
+}
+
+.card .back,
+.card .front {
+  width: 90%;
+  height: 90%;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+  line-height: 1;
+  transition: transform 0.6s ease;
+  margin: 2px;
+}
+
+.card .back {
+  background-color: black;
+  border-radius: 10%;
+}
+
+.card .front {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: rotateY(-180deg) translateZ(1px);
+  backface-visibility: hidden;
+  border-radius: 10%;
+  background-size: cover !important;
+  background-position: center;
+}
+.logo {
+  height: 100px;
+  width: 100px;
+  /* border-radius: 100%; */
+  position: relative;
+  display: flex;
+  box-shadow: aliceblue;
+  margin-left: 10%;
+}
+
+h1 {
+  color: bisque;
+  padding-left: 280px;
+  /*padding-top: 20px;*/
+  text-align: left;
+}
+
+h2 {
+  color: bisque;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+h4 {
+  color: bisque;
+}
+
+#score {
+  border: radius 10px;
+  font-size: 30px;
+  font-family: Arial;
+  width: 200px;
+  padding: 20px;
+  margin: 0;
+}
+
+p {
+  font-size: 20px;
+  color: bisque;
+  text-align: left;
+}
