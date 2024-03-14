@@ -82,7 +82,7 @@ allCards.forEach((card) => {
       if (customMemoryGame.checkIfFinished()) {
         win.show();
         //alert("Congratulations! You've completed the game ! Welcome to Namek");
-        clearInterval(intervalId);
+        clearInterval(timerInterval);
         isTimerRunning = false;
       }
     }
