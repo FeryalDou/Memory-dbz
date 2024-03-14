@@ -31,6 +31,7 @@ const startButton = document.getElementById("startButton");
 const resetButton = document.getElementById("timerReset");
 const timerStart = startButton;
 const secondsElement = document.getElementById("seconds");
+const soundCard = new Audio("./sounds/soundcard.mp3");
 let time = 59;
 let intervalId = null;
 let reset = resetButton;
@@ -52,6 +53,7 @@ const allCards = document.querySelectorAll(".card");
 
 allCards.forEach((card) => {
   card.addEventListener("click", () => {
+    soundCard.play();
     card.classList.add("turned");
     customMemoryGame.pickedCards.push(card);
 
@@ -80,6 +82,8 @@ allCards.forEach((card) => {
       if (customMemoryGame.checkIfFinished()) {
         win.show();
         //alert("Congratulations! You've completed the game ! Welcome to Namek");
+        clearInterval(intervalId);
+        isTimerRunning = false;
       }
     }
   });
@@ -87,9 +91,10 @@ allCards.forEach((card) => {
 
 resetButton.addEventListener("click", () => {
   clearInterval(intervalId);
-  secondsElement.textContent = "2";
+  secondsElement.textContent = "2:00";
+  startButton.disabled = false;
   win.close();
-  //startTimer();
+  // startTimer();
 
   customMemoryGame.shuffleCards();
   allCards.forEach((card) => {
@@ -106,6 +111,7 @@ resetButton.addEventListener("click", () => {
 });
 
 startButton.addEventListener("click", () => {
+  startButton.disabled = true;
   customMemoryGame.shuffleCards();
   allCards.forEach((card) => {
     card.classList.remove("turned");
@@ -130,12 +136,14 @@ function startTimer() {
     if (seconds < 10) {
       seconds = "0" + seconds;
     }
+
     console.log(minutes + ":" + seconds);
     secondsElement.textContent = minutes + ":" + seconds;
     time--;
     // console.log(time);
     // secondsElement.textContent = time;
     if (time === 0) {
+      //if (time === 0 && customMemoryGame.pairsGuessed !== cards.length / 2) {
       clearInterval(intervalId);
       //alert("Game over !!! ");
       loose.show();
